@@ -52,26 +52,18 @@ end
 Then use it to process text:
 
 ```ruby
-# Example text about space exploration
-text = "NASA's Artemis program aims to land the first woman and next man on the Moon by 2024. " \
-       "This ambitious goal will establish sustainable lunar exploration by 2028. " \
-       "SpaceX, led by Elon Musk, focuses on developing reusable rockets and spacecraft. " \
-       "Their Starship project aims to enable human missions to Mars. " \
-       "Blue Origin, founded by Jeff Bezos, is developing the New Glenn rocket " \
-       "and the Blue Moon lunar lander for future space missions."
+# Example text about the solar system
+text = "The solar system consists of the Sun and everything that orbits around it. " \
+       "Earth is the third planet from the Sun and the only known planet to harbor life. " \
+       "It has a protective atmosphere and liquid water on its surface. " \
+       "Mars, often called the Red Planet, has evidence of ancient water flows and organic molecules. " \
+       "Scientists believe Mars once had conditions suitable for microbial life. " \
+       "Venus, despite being similar in size to Earth, has a runaway greenhouse effect " \
+       "making its surface hot enough to melt lead."
 
-# Query about Mars missions
-results = Tokentrim.process(text, "Tell me about Mars missions")
-puts "Results for Mars-related content:"
-results.each do |result|
-  puts "\nChunk: #{result[:chunk]}"
-  puts "Relevance Score: #{result[:score]}/100"
-  puts "---"
-end
-
-# Query about Moon missions
-results = Tokentrim.process(text, "What are the plans for Moon exploration?")
-puts "\nResults for Moon-related content:"
+# Query about potentially habitable planets
+results = Tokentrim.process(text, "Which planets could support life?")
+puts "Results for habitability-related content:"
 results.each do |result|
   puts "\nChunk: #{result[:chunk]}"
   puts "Relevance Score: #{result[:score]}/100"
@@ -82,25 +74,18 @@ end
 Example output:
 
 ```
-Results for Mars-related content:
-Chunk: "SpaceX, led by Elon Musk, focuses on developing reusable rockets and spacecraft. Their Starship project aims to enable human missions to Mars."
+Results for habitability-related content:
+Chunk: "Earth is the third planet from the Sun and the only known planet to harbor life. It has a protective atmosphere and liquid water on its surface."
 Relevance Score: 95/100
 ---
-Chunk: "Blue Origin, founded by Jeff Bezos, is developing the New Glenn rocket and the Blue Moon lunar lander for future space missions."
-Relevance Score: 35/100
+Chunk: "Mars, often called the Red Planet, has evidence of ancient water flows and organic molecules. Scientists believe Mars once had conditions suitable for microbial life."
+Relevance Score: 85/100
 ---
-Chunk: "NASA's Artemis program aims to land the first woman and next man on the Moon by 2024. This ambitious goal will establish sustainable lunar exploration by 2028."
-Relevance Score: 15/100
-
-Results for Moon-related content:
-Chunk: "NASA's Artemis program aims to land the first woman and next man on the Moon by 2024. This ambitious goal will establish sustainable lunar exploration by 2028."
-Relevance Score: 90/100
+Chunk: "Venus, despite being similar in size to Earth, has a runaway greenhouse effect making its surface hot enough to melt lead."
+Relevance Score: 60/100
 ---
-Chunk: "Blue Origin, founded by Jeff Bezos, is developing the New Glenn rocket and the Blue Moon lunar lander for future space missions."
-Relevance Score: 75/100
----
-Chunk: "SpaceX, led by Elon Musk, focuses on developing reusable rockets and spacecraft. Their Starship project aims to enable human missions to Mars."
-Relevance Score: 20/100
+Chunk: "The solar system consists of the Sun and everything that orbits around it."
+Relevance Score: 10/100
 ```
 
 ### Commercial Features
