@@ -86,7 +86,7 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/robertlucy/tokentrim. This project is intended to be a safe, welcoming space for collaboration.
+Bug reports and pull requests are welcome on GitHub at https://github.com/robert10997/tokentrim.
 
 ## License
 
