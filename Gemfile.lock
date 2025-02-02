@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tokentrim (0.1.1)
+    tokentrim (0.1.2)
       faraday (~> 2.9)
 
 GEM
