@@ -15,8 +15,8 @@ Gem::Specification.new do |spec|
   spec.license = "MIT" # Core features only, commercial features require separate license
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/robertlucy/tokentrim"
-  spec.metadata["changelog_uri"] = "https://github.com/robertlucy/tokentrim/blob/main/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/robert10997/tokentrim"
+  spec.metadata["changelog_uri"] = "https://github.com/robert10997/tokentrim/blob/main/CHANGELOG.md"
   spec.metadata["license_uri"] = "https://tokentrim.com/license"
   spec.metadata["rubygems_mfa_required"] = "true"
 
