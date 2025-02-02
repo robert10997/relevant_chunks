@@ -52,16 +52,55 @@ end
 Then use it to process text:
 
 ```ruby
-text = "Your long text here..."
-query = "What is this text about?"
+# Example text about space exploration
+text = "NASA's Artemis program aims to land the first woman and next man on the Moon by 2024. " \
+       "This ambitious goal will establish sustainable lunar exploration by 2028. " \
+       "SpaceX, led by Elon Musk, focuses on developing reusable rockets and spacecraft. " \
+       "Their Starship project aims to enable human missions to Mars. " \
+       "Blue Origin, founded by Jeff Bezos, is developing the New Glenn rocket " \
+       "and the Blue Moon lunar lander for future space missions."
 
-results = Tokentrim.process(text, query)
-
+# Query about Mars missions
+results = Tokentrim.process(text, "Tell me about Mars missions")
+puts "Results for Mars-related content:"
 results.each do |result|
-  puts "Chunk: #{result[:chunk]}"
-  puts "Relevance Score: #{result[:score]}"
+  puts "\nChunk: #{result[:chunk]}"
+  puts "Relevance Score: #{result[:score]}/100"
   puts "---"
 end
+
+# Query about Moon missions
+results = Tokentrim.process(text, "What are the plans for Moon exploration?")
+puts "\nResults for Moon-related content:"
+results.each do |result|
+  puts "\nChunk: #{result[:chunk]}"
+  puts "Relevance Score: #{result[:score]}/100"
+  puts "---"
+end
+```
+
+Example output:
+
+```
+Results for Mars-related content:
+Chunk: "SpaceX, led by Elon Musk, focuses on developing reusable rockets and spacecraft. Their Starship project aims to enable human missions to Mars."
+Relevance Score: 95/100
+---
+Chunk: "Blue Origin, founded by Jeff Bezos, is developing the New Glenn rocket and the Blue Moon lunar lander for future space missions."
+Relevance Score: 35/100
+---
+Chunk: "NASA's Artemis program aims to land the first woman and next man on the Moon by 2024. This ambitious goal will establish sustainable lunar exploration by 2028."
+Relevance Score: 15/100
+
+Results for Moon-related content:
+Chunk: "NASA's Artemis program aims to land the first woman and next man on the Moon by 2024. This ambitious goal will establish sustainable lunar exploration by 2028."
+Relevance Score: 90/100
+---
+Chunk: "Blue Origin, founded by Jeff Bezos, is developing the New Glenn rocket and the Blue Moon lunar lander for future space missions."
+Relevance Score: 75/100
+---
+Chunk: "SpaceX, led by Elon Musk, focuses on developing reusable rockets and spacecraft. Their Starship project aims to enable human missions to Mars."
+Relevance Score: 20/100
 ```
 
 ### Commercial Features
