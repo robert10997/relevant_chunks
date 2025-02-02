@@ -37,6 +37,8 @@ GEM
     racc (1.8.1)
     rainbow (3.1.1)
     rake (13.2.1)
+    rbs (3.8.1)
+      logger
     regexp_parser (2.10.0)
     rexml (3.4.0)
     rspec (3.13.0)
@@ -92,6 +94,7 @@ PLATFORMS
 DEPENDENCIES
   dotenv (~> 2.7)
   rake (~> 13.0)
+  rbs (~> 3.4)
   rspec (~> 3.0)
   rubocop (~> 1.21)
   rubocop-rspec (~> 2.21)
