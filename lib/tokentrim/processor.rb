@@ -133,7 +133,13 @@ module Tokentrim
           messages: [
             {
               role: "user",
-              content: "Text chunk to evaluate: #{chunk}\n\nQuery: #{query}\n\nPlease output only a number from 0-#{max_score} indicating how relevant this text chunk is to the query."
+              content: <<~STRING
+                Text chunk to evaluate: #{chunk}
+
+                Query: #{query}
+
+                Please output only a number from 0-#{max_score} indicating how relevant this text chunk is to the query.
+              STRING
             }
           ]
         }
@@ -149,9 +155,11 @@ module Tokentrim
     #
     # @return [String]
     def default_system_prompt
-      "You are a text relevance scoring system. Your task is to evaluate how relevant a given text chunk is to a query. " \
-        "Score on a scale of 0-#{max_score}, where 0 means completely irrelevant and #{max_score} means highly relevant. " \
-        "Consider semantic meaning, not just keyword matching. Output only the numeric score."
+      <<~STRING
+        You are a text relevance scoring system. Your task is to evaluate how relevant a given text chunk is to a query.
+        Score on a scale of 0-#{max_score}, where 0 means completely irrelevant and #{max_score} means highly relevant.
+        Consider semantic meaning, not just keyword matching. Output only the numeric score.
+      STRING
     end
   end
 end
