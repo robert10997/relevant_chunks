@@ -1,27 +1,66 @@
-name: Ruby
+name: CI
 
 on:
-  push:
-    branches:
-      - main
-
-  pull_request:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    name: Ruby ${{ matrix.ruby }}
-    strategy:
-      matrix:
-        ruby:
-          - '3.2.2'
+    test:
+        runs-on: ubuntu-latest
+        name: Ruby ${{ matrix.ruby }}
+        strategy:
+            fail-fast: false
+            matrix:
+                ruby:
+                    - "3.2.2"
+                    - "3.1.4"
+                    - "3.0.6"
+                    - "2.7.8"
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
-    - name: Run the default task
-      run: bundle exec rake
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Set up Ruby
+              uses: ruby/setup-ruby@v1
+              with:
+                  ruby-version: ${{ matrix.ruby }}
+                  bundler-cache: true
+
+            - name: Run tests
+              run: bundle exec rspec
+
+    lint:
+        runs-on: ubuntu-latest
+        name: RuboCop
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Set up Ruby
+              uses: ruby/setup-ruby@v1
+              with:
+                  ruby-version: "3.2.2"
+                  bundler-cache: true
+
+            - name: Run RuboCop
+              run: bundle exec rubocop --parallel
+
+    typecheck:
+        runs-on: ubuntu-latest
+        name: RBS Typecheck
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Set up Ruby
+              uses: ruby/setup-ruby@v1
+              with:
+                  ruby-version: "3.2.2"
+                  bundler-cache: true
+
+            - name: Run RBS typecheck
+              run: bundle exec rbs collection install && bundle exec rbs typecheck
