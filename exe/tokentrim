@@ -8,7 +8,6 @@ require "json"
 options = {
   max_tokens: 1000,
   overlap_size: 100,
-  parallel: false,
   format: "text"
 }
 
@@ -19,20 +18,12 @@ parser = OptionParser.new do |opts|
     options[:api_key] = key
   end
 
-  opts.on("-l", "--license-key KEY", "Commercial license key") do |key|
-    options[:license_key] = key
-  end
-
   opts.on("-t", "--max-tokens N", Integer, "Maximum tokens per chunk") do |n|
     options[:max_tokens] = n
   end
 
   opts.on("-o", "--overlap N", Integer, "Overlap size between chunks") do |n|
     options[:overlap_size] = n
-  end
-
-  opts.on("-p", "--[no-]parallel", "Enable parallel processing (requires license)") do |p|
-    options[:parallel] = p
   end
 
   opts.on("-f", "--format FORMAT", %w[text json], "Output format (text/json)") do |f|
@@ -64,10 +55,8 @@ end
 begin
   Tokentrim.configure do |config|
     config.api_key = options[:api_key] if options[:api_key]
-    config.license_key = options[:license_key] if options[:license_key]
     config.max_tokens = options[:max_tokens]
     config.overlap_size = options[:overlap_size]
-    config.parallel = options[:parallel]
   end
 
   results = Tokentrim.process(text, query)

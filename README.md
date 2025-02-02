@@ -1,21 +1,13 @@
 # TokenTrim
 
-TokenTrim is a Ruby gem that provides intelligent text chunking and relevance scoring using Claude/Anthropic's AI models. It features smart boundary detection, configurable overlap, and optional parallel processing for paid users.
+TokenTrim is a Ruby gem that provides intelligent text chunking and relevance scoring using Claude/Anthropic's AI models. It features smart boundary detection and configurable overlap.
 
 ## Features
-
-### Core Features (MIT Licensed)
 
 -   Smart text chunking with natural boundary detection
 -   Configurable chunk size and overlap
 -   Relevance scoring using Claude/Anthropic
 -   BYOK (Bring Your Own Key) model
-
-### Commercial Features (Commercial License)
-
--   Parallel processing for faster results
--   Priority support
--   Additional features coming soon
 
 ## Installation
 
@@ -52,21 +44,16 @@ end
 Then use it to process text:
 
 ```ruby
-# Example text about the solar system
 text = "The solar system consists of the Sun and everything that orbits around it. " \
+       "This includes eight planets, numerous moons, asteroids, comets, and other celestial objects. " \
        "Earth is the third planet from the Sun and the only known planet to harbor life. " \
-       "It has a protective atmosphere and liquid water on its surface. " \
-       "Mars, often called the Red Planet, has evidence of ancient water flows and organic molecules. " \
-       "Scientists believe Mars once had conditions suitable for microbial life. " \
-       "Venus, despite being similar in size to Earth, has a runaway greenhouse effect " \
-       "making its surface hot enough to melt lead."
+       "Mars, often called the Red Planet, has been the subject of numerous exploration missions."
 
-# Query about potentially habitable planets
-results = Tokentrim.process(text, "Which planets could support life?")
-puts "Results for habitability-related content:"
+# Query about Mars
+results = Tokentrim.process(text, "Tell me about Mars")
 results.each do |result|
-  puts "\nChunk: #{result[:chunk]}"
-  puts "Relevance Score: #{result[:score]}/100"
+  puts "Chunk: #{result[:chunk]}"
+  puts "Score: #{result[:score]}/100"
   puts "---"
 end
 ```
@@ -74,32 +61,14 @@ end
 Example output:
 
 ```
-Results for habitability-related content:
-Chunk: "Earth is the third planet from the Sun and the only known planet to harbor life. It has a protective atmosphere and liquid water on its surface."
-Relevance Score: 95/100
+Chunk: "Mars, often called the Red Planet, has been the subject of numerous exploration missions."
+Score: 95/100
 ---
-Chunk: "Mars, often called the Red Planet, has evidence of ancient water flows and organic molecules. Scientists believe Mars once had conditions suitable for microbial life."
-Relevance Score: 85/100
----
-Chunk: "Venus, despite being similar in size to Earth, has a runaway greenhouse effect making its surface hot enough to melt lead."
-Relevance Score: 60/100
+Chunk: "Earth is the third planet from the Sun and the only known planet to harbor life."
+Score: 35/100
 ---
 Chunk: "The solar system consists of the Sun and everything that orbits around it."
-Relevance Score: 10/100
-```
-
-### Commercial Features
-
-To use commercial features like parallel processing, you'll need a commercial license. Visit https://tokentrim.com to purchase a license.
-
-Once you have a license:
-
-```ruby
-Tokentrim.configure do |config|
-  config.api_key = "your_anthropic_api_key"
-  config.license_key = "your_commercial_license_key" # Required for commercial features
-  config.parallel = true # Now enabled with valid license
-end
+Score: 10/100
 ```
 
 ## Development
@@ -114,9 +83,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/robert
 
 ## License
 
-TokenTrim uses a dual-license model:
-
--   Core features are available under the MIT License
--   Commercial features require a paid license from https://tokentrim.com
-
-For more details, see the [LICENSE](LICENSE) file and [Commercial License Terms](https://tokentrim.com/license).
+The gem is available as open source under the terms of the MIT License.

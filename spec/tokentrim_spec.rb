@@ -46,10 +46,9 @@ RSpec.describe Tokentrim do
 end
 
 RSpec.describe Tokentrim::Processor do
-  subject(:processor) { described_class.new(api_key: api_key, parallel: parallel, **processor_options) }
+  subject(:processor) { described_class.new(api_key: api_key, **processor_options) }
 
   let(:api_key) { "test_key" }
-  let(:parallel) { false }
   let(:text) { "This is a test sentence. Here is another one." }
   let(:query) { "What is this about?" }
   let(:response_body) { { content: [{ text: "75" }] }.to_json }
@@ -58,8 +57,6 @@ RSpec.describe Tokentrim::Processor do
   before do
     Tokentrim.configure do |config|
       config.api_key = api_key
-      config.license_key = "test_license" if parallel
-      config.parallel = parallel
     end
 
     stub_request(:post, "https://api.anthropic.com/v1/messages")
@@ -170,22 +167,6 @@ RSpec.describe Tokentrim::Processor do
         result = processor.process(text, query).first
         expect(result[:score]).to be_between(0, 10)
       end
-    end
-  end
-
-  describe "with parallel processing" do
-    let(:parallel) { true }
-    let(:license_key) { "test-license-key" }
-
-    before do
-      allow(Parallel).to receive(:map) do |array, &block|
-        array.map(&block)
-      end
-    end
-
-    it "processes chunks in parallel" do
-      processor.process(text, query)
-      expect(Parallel).to have_received(:map)
     end
   end
 end
