@@ -13,3 +13,6 @@
 # Environment variables
 .env
 .env.*
+
+# RBS collection
+/.gem_rbs_collection/

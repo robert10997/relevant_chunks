@@ -1,0 +1,13 @@
+# Collection of type definitions for TokenTrim
+sources:
+    - type: git
+      name: ruby/gem_rbs_collection
+      remote: https://github.com/ruby/gem_rbs_collection.git
+      revision: main
+      repo_dir: gems
+
+path: .gem_rbs_collection
+
+gems:
+    - name: faraday
+    - name: parallel
