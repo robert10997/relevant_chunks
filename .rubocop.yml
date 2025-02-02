@@ -1,0 +1,58 @@
+require:
+    - rubocop-rspec
+
+AllCops:
+    TargetRubyVersion: 2.6
+    NewCops: enable
+
+Metrics/MethodLength:
+    Max: 30
+
+Metrics/BlockLength:
+    Exclude:
+        - "spec/**/*"
+        - "*.gemspec"
+
+Metrics/AbcSize:
+    Max: 40
+
+Metrics/CyclomaticComplexity:
+    Max: 15
+
+Metrics/PerceivedComplexity:
+    Max: 15
+
+Layout/LineLength:
+    Max: 120
+    Exclude:
+        - "tokentrim.gemspec"
+    AllowedPatterns:
+        - '^\s*#' # Allow long comments
+        - "def default_system_prompt" # Allow long system prompts
+
+Style/StringLiterals:
+    Enabled: true
+    EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+    Enabled: true
+    EnforcedStyle: double_quotes
+
+Metrics/ParameterLists:
+    Max: 8
+    CountKeywordArgs: true
+
+RSpec/MultipleMemoizedHelpers:
+    Max: 10
+
+RSpec/ExampleLength:
+    Max: 10
+
+RSpec/MultipleDescribes:
+    Enabled: false
+
+RSpec/DescribedClass:
+    Enabled: true
+
+Metrics/ClassLength:
+    Max: 150 # The Processor class needs extra room for documentation
