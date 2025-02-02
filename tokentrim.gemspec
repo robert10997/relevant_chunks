@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Smart text chunking and relevance scoring using Claude/Anthropic"
   spec.description = "TokenTrim provides intelligent text chunking with smart boundaries and overlap, plus relevance scoring using Claude/Anthropic's AI models. Core features are MIT licensed, with additional commercial features available under a separate license. Visit https://tokentrim.com for licensing details."
-  spec.homepage = "https://github.com/robertlucy/tokentrim"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.homepage = "https://github.com/robert10997/tokentrim"
+  spec.required_ruby_version = ">= 3.0.0"
   spec.license = "MIT" # Core features only, commercial features require separate license
 
   spec.metadata["homepage_uri"] = spec.homepage
