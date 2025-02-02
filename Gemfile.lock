@@ -1,9 +1,8 @@
 PATH
   remote: .
   specs:
-    tokentrim (0.1.0)
+    tokentrim (0.1.1)
       faraday (~> 2.9)
-      parallel (~> 1.24)
 
 GEM
   remote: https://rubygems.org/

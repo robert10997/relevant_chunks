@@ -9,15 +9,14 @@ Gem::Specification.new do |spec|
   spec.email = ["robertlucy@gmail.com"]
 
   spec.summary = "Smart text chunking and relevance scoring using Claude/Anthropic"
-  spec.description = "TokenTrim provides intelligent text chunking with smart boundaries and overlap, plus relevance scoring using Claude/Anthropic's AI models. Core features are MIT licensed, with additional commercial features available under a separate license. Visit https://tokentrim.com for licensing details."
+  spec.description = "TokenTrim provides intelligent text chunking with smart boundaries and overlap, plus relevance scoring using Claude/Anthropic's AI models."
   spec.homepage = "https://github.com/robert10997/tokentrim"
   spec.required_ruby_version = ">= 3.0.0"
-  spec.license = "MIT" # Core features only, commercial features require separate license
+  spec.license = "MIT"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/robert10997/tokentrim"
   spec.metadata["changelog_uri"] = "https://github.com/robert10997/tokentrim/blob/main/CHANGELOG.md"
-  spec.metadata["license_uri"] = "https://tokentrim.com/license"
   spec.metadata["rubygems_mfa_required"] = "true"
 
   # Specify which files should be added to the gem when it is released.
@@ -33,7 +32,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "faraday", "~> 2.9"
-  spec.add_dependency "parallel", "~> 1.24"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
