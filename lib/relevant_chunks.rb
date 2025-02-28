@@ -1,31 +1,31 @@
 # frozen_string_literal: true
 
-require_relative "tokentrim/version"
-require_relative "tokentrim/chunker"
-require_relative "tokentrim/processor"
+require_relative "relevant_chunks/version"
+require_relative "relevant_chunks/chunker"
+require_relative "relevant_chunks/processor"
 require "net/http"
 require "json"
 
-# TokenTrim provides intelligent text chunking and relevance scoring using Claude/Anthropic.
+# RelevantChunks provides intelligent text chunking and relevance scoring using Claude/Anthropic.
 #
 # @example Basic usage
-#   Tokentrim.configure do |config|
+#   RelevantChunks.configure do |config|
 #     config.api_key = "your_anthropic_api_key"
 #   end
 #
-#   results = Tokentrim.process("Your text here", "Your query")
-module Tokentrim
+#   results = RelevantChunks.process("Your text here", "Your query")
+module RelevantChunks
   class Error < StandardError; end
 
   class << self
     attr_accessor :configuration
   end
 
-  # Configures TokenTrim with the given settings
+  # Configures RelevantChunks with the given settings
   #
   # @yield [config] Configuration object
   # @example
-  #   Tokentrim.configure do |config|
+  #   RelevantChunks.configure do |config|
   #     config.api_key = "your_anthropic_api_key"
   #     config.max_tokens = 1000
   #   end
@@ -34,7 +34,7 @@ module Tokentrim
     yield(configuration) if block_given?
   end
 
-  # Configuration class for TokenTrim
+  # Configuration class for RelevantChunks
   class Configuration
     attr_accessor :api_key, :max_tokens, :overlap_size
 
@@ -54,7 +54,7 @@ module Tokentrim
   # @return [Array<Hash>] Array of chunks with relevance scores
   # @raise [Error] If API key is not configured
   # @example
-  #   results = Tokentrim.process("Long text here", "What is this about?")
+  #   results = RelevantChunks.process("Long text here", "What is this about?")
   #   results.each do |result|
   #     puts "Chunk: #{result[:chunk]}"
   #     puts "Score: #{result[:score]}"

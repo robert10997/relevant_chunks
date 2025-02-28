@@ -2,7 +2,7 @@
 
 require "logger"
 
-module Tokentrim
+module RelevantChunks
   # Handles text chunking with smart boundary detection and configurable overlap
   #
   # The Chunker class splits text into chunks while trying to maintain natural
@@ -10,7 +10,7 @@ module Tokentrim
   # chunks to ensure context is maintained across chunk boundaries.
   #
   # @example
-  #   chunker = Tokentrim::Chunker.new(max_tokens: 1000, overlap_size: 100)
+  #   chunker = RelevantChunks::Chunker.new(max_tokens: 1000, overlap_size: 100)
   #   chunks = chunker.chunk_text("Your long text here...")
   class Chunker
     class << self
@@ -39,7 +39,7 @@ module Tokentrim
     # @param text [String] The text to split into chunks
     # @return [Array<String>] Array of text chunks
     # @example
-    #   chunker = Tokentrim::Chunker.new
+    #   chunker = RelevantChunks::Chunker.new
     #   chunks = chunker.chunk_text("First sentence. Second sentence.")
     def chunk_text(text)
       @logger.info "Starting chunk_text with text length: #{text.length}"

@@ -25,7 +25,7 @@ Metrics/PerceivedComplexity:
 Layout/LineLength:
     Max: 120
     Exclude:
-        - "tokentrim.gemspec"
+        - "relevant_chunks.gemspec"
     AllowedPatterns:
         - '^\s*#' # Allow long comments
         - "def default_system_prompt" # Allow long system prompts

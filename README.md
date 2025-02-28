@@ -1,6 +1,6 @@
-# TokenTrim
+# RelevantChunks
 
-TokenTrim is a Ruby gem that provides intelligent text chunking and relevance scoring using Claude/Anthropic's AI models. It features smart boundary detection and configurable overlap.
+RelevantChunks is a Ruby gem that provides intelligent text chunking and relevance scoring using Claude/Anthropic's AI models. It features smart boundary detection and configurable overlap.
 
 ## Features
 
@@ -14,7 +14,7 @@ TokenTrim is a Ruby gem that provides intelligent text chunking and relevance sc
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'tokentrim'
+gem 'relevant_chunks'
 ```
 
 And then execute:
@@ -26,15 +26,15 @@ $ bundle install
 Or install it yourself as:
 
 ```bash
-$ gem install tokentrim
+$ gem install relevant_chunks
 ```
 
 ## Usage
 
-First, configure TokenTrim with your Anthropic API key:
+First, configure RelevantChunks with your Anthropic API key:
 
 ```ruby
-Tokentrim.configure do |config|
+RelevantChunks.configure do |config|
   config.api_key = "your_anthropic_api_key"
   config.max_tokens = 1000  # optional, default: 1000
   config.overlap_size = 100 # optional, default: 100
@@ -50,7 +50,7 @@ text = "The solar system consists of the Sun and everything that orbits around i
        "Mars, often called the Red Planet, has been the subject of numerous exploration missions."
 
 # Query about Mars
-results = Tokentrim.process(text, "Tell me about Mars")
+results = RelevantChunks.process(text, "Tell me about Mars")
 results.each do |result|
   puts "Chunk: #{result[:chunk]}"
   puts "Score: #{result[:score]}/100"
@@ -79,7 +79,7 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/robert10997/tokentrim.
+Bug reports and pull requests are welcome on GitHub at https://github.com/robert10997/relevant_chunks.
 
 ## License
 

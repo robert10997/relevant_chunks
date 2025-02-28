@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "tokentrim"
+require "relevant_chunks"
 require "webmock/rspec"
 
 RSpec.configure do |config|

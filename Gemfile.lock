@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tokentrim (0.1.2)
+    relevant_chunks (0.3.0)
       faraday (~> 2.9)
 
 GEM
@@ -14,7 +14,7 @@ GEM
     crack (1.0.0)
       bigdecimal
       rexml
-    diff-lcs (1.5.1)
+    diff-lcs (1.6.0)
     dotenv (2.8.1)
     faraday (2.12.2)
       faraday-net_http (>= 2.0, < 3.5)
@@ -23,13 +23,14 @@ GEM
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
     hashdiff (1.1.2)
-    json (2.9.1)
+    json (2.10.1)
     language_server-protocol (3.17.0.4)
-    logger (1.6.5)
+    lint_roller (1.1.0)
+    logger (1.6.6)
     net-http (0.6.0)
       uri
     parallel (1.26.3)
-    parser (3.3.7.0)
+    parser (3.3.7.1)
       ast (~> 2.4.1)
       racc
     public_suffix (6.0.1)
@@ -38,12 +39,12 @@ GEM
     rake (13.2.1)
     rbs (3.0.4)
     regexp_parser (2.10.0)
-    rexml (3.4.0)
+    rexml (3.4.1)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
       rspec-mocks (~> 3.13.0)
-    rspec-core (3.13.2)
+    rspec-core (3.13.3)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.3)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -52,9 +53,10 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-support (3.13.2)
-    rubocop (1.71.1)
+    rubocop (1.73.1)
       json (~> 2.3)
-      language_server-protocol (>= 3.17.0)
+      language_server-protocol (~> 3.17.0.2)
+      lint_roller (~> 1.1.0)
       parallel (~> 1.10)
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
@@ -62,7 +64,7 @@ GEM
       rubocop-ast (>= 1.38.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.38.0)
+    rubocop-ast (1.38.1)
       parser (>= 3.3.1.0)
     rubocop-capybara (2.21.0)
       rubocop (~> 1.41)
@@ -79,24 +81,23 @@ GEM
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
-    uri (1.0.2)
-    webmock (3.24.0)
+    uri (1.0.3)
+    webmock (3.25.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
 
 PLATFORMS
   arm64-darwin-24
-  x86_64-linux
 
 DEPENDENCIES
   dotenv (~> 2.7)
   rake (~> 13.0)
   rbs (~> 3.0.4)
+  relevant_chunks!
   rspec (~> 3.0)
   rubocop (~> 1.21)
   rubocop-rspec (~> 2.21)
-  tokentrim!
   webmock (~> 3.19)
 
 BUNDLED WITH

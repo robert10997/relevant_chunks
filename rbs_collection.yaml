@@ -1,4 +1,4 @@
-# Collection of type definitions for TokenTrim
+# Collection of type definitions for RelevantChunks
 sources:
     - type: git
       name: ruby/gem_rbs_collection

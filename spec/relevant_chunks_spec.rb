@@ -3,7 +3,7 @@
 require "spec_helper"
 require "logger"
 
-RSpec.describe Tokentrim do
+RSpec.describe RelevantChunks do
   let(:logger) { Logger.new($stdout) }
 
   after do
@@ -15,7 +15,7 @@ RSpec.describe Tokentrim do
     expect(described_class::VERSION).not_to be_nil
   end
 
-  describe Tokentrim::Chunker do
+  describe RelevantChunks::Chunker do
     subject(:chunker) { described_class.new(max_tokens: 50, overlap_size: 10) }
 
     let(:text) { "This is a test sentence. Here is another one. And a third sentence for good measure." }
@@ -45,7 +45,7 @@ RSpec.describe Tokentrim do
   end
 end
 
-RSpec.describe Tokentrim::Processor do
+RSpec.describe RelevantChunks::Processor do
   subject(:processor) { described_class.new(api_key: api_key, **processor_options) }
 
   let(:api_key) { "test_key" }
@@ -55,7 +55,7 @@ RSpec.describe Tokentrim::Processor do
   let(:processor_options) { {} }
 
   before do
-    Tokentrim.configure do |config|
+    RelevantChunks.configure do |config|
       config.api_key = api_key
     end
 

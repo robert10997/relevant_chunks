@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require "tokentrim"
+require "relevant_chunks"
 require "optparse"
 require "json"
 
@@ -12,7 +12,7 @@ options = {
 }
 
 parser = OptionParser.new do |opts|
-  opts.banner = "Usage: tokentrim [options] <text_file> <query>"
+  opts.banner = "Usage: relevant_chunks [options] <text_file> <query>"
 
   opts.on("-k", "--api-key KEY", "Anthropic API key") do |key|
     options[:api_key] = key
@@ -53,13 +53,13 @@ rescue StandardError => e
 end
 
 begin
-  Tokentrim.configure do |config|
+  RelevantChunks.configure do |config|
     config.api_key = options[:api_key] if options[:api_key]
     config.max_tokens = options[:max_tokens]
     config.overlap_size = options[:overlap_size]
   end
 
-  results = Tokentrim.process(text, query)
+  results = RelevantChunks.process(text, query)
 
   case options[:format]
   when "json"
@@ -72,7 +72,7 @@ begin
       puts "\n"
     end
   end
-rescue Tokentrim::Error => e
+rescue RelevantChunks::Error => e
   puts "Error: #{e.message}"
   exit 1
 end

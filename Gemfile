@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in tokentrim.gemspec
+# Specify your gem's dependencies in relevant_chunks.gemspec
 gemspec
 
 group :development, :test do

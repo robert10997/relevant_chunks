@@ -3,17 +3,17 @@
 require "faraday"
 require "json"
 
-module Tokentrim
+module RelevantChunks
   # Handles text processing and relevance scoring using Claude/Anthropic
   #
   # The Processor class manages the chunking and scoring of text using the Anthropic API.
   #
   # @example Basic usage
-  #   processor = Tokentrim::Processor.new(api_key: "your_key")
+  #   processor = RelevantChunks::Processor.new(api_key: "your_key")
   #   results = processor.process("Long text here", "What is this about?")
   #
   # @example Advanced configuration
-  #   processor = Tokentrim::Processor.new(
+  #   processor = RelevantChunks::Processor.new(
   #     api_key: "your_key",
   #     model: "claude-3-5-sonnet-latest",  # Use a different model variant
   #     temperature: 0.1,                 # Add slight variation to scores
@@ -22,7 +22,7 @@ module Tokentrim
   #   )
   #
   # @example Scoring text relevance with different queries
-  #   processor = Tokentrim::Processor.new(api_key: "your_key")
+  #   processor = RelevantChunks::Processor.new(api_key: "your_key")
   #   text = "The solar system consists of the Sun and everything that orbits around it. " \
   #          "This includes eight planets, numerous moons, asteroids, comets, and other celestial objects. " \
   #          "Earth is the third planet from the Sun and the only known planet to harbor life. " \
@@ -105,7 +105,7 @@ module Tokentrim
     #   - :score [Integer] The relevance score (0-100)
     #   - :response [Hash] The complete raw response from the Anthropic API
     # @example
-    #   processor = Tokentrim::Processor.new(api_key: "your_key")
+    #   processor = RelevantChunks::Processor.new(api_key: "your_key")
     #   results = processor.process("Long text here", "What is this about?")
     #   results.each do |result|
     #     puts "Chunk: #{result[:chunk]}"
